@@ -2,6 +2,25 @@
   "name": "portfolio",
   "version": "0.1.0",
   "private": true,
+  "author": "Nélio Espíndula Junior",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NelioEspindulaJr/portfolio"
+  },
+  "homepage": "https://github.com/NelioEspindulaJr/portfolio",
+  "keywords": [
+    "portfolio",
+    "nextjs",
+    "tailwindcss",
+    "shadcn",
+    "animate-ui"
+  ],
+  "description": "My portfolio website",
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "packageManager": "pnpm@10.9.0",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -21,6 +40,7 @@
     "tailwind-merge": "^3.4.0"
   },
   "devDependencies": {
+    "@faker-js/faker": "^10.3.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
