@@ -1,7 +1,9 @@
+"use client";
+
 import Link from "next/link";
+import SignInAndOut from "./sign-in-and-out";
 
 import { siteContent } from "@/data/site-content";
-
 import { ModeToggle } from "@/components/theme-toggle";
 
 export function SiteHeader() {
@@ -12,11 +14,8 @@ export function SiteHeader() {
           href="/"
           className="text-base font-medium tracking-tight text-foreground"
         >
-          {"< "}
           {siteContent.name}
-          {" />"}
         </Link>
-
         <div className="flex items-center gap-5">
           <nav className="hidden items-center gap-5 md:flex">
             {siteContent.nav.map((item) => (
@@ -28,8 +27,9 @@ export function SiteHeader() {
                 {item.label}
               </Link>
             ))}
+            <ModeToggle />
           </nav>
-          <ModeToggle />
+          <SignInAndOut />
         </div>
       </div>
     </header>

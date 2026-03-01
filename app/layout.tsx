@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
-import { bebasNeue, sora } from "@/app/fonts";
-import { ThemeProvider } from "@/components/providers/theme-provider";
+import { bebasNeue, inter, sora } from "@/app/fonts";
 import { ViewTransitions } from "next-view-transitions";
 
+import Providers from "@/components/providers/providers";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -19,10 +19,10 @@ export default function RootLayout({
   return (
     <ViewTransitions>
       <html lang="pt-BR" suppressHydrationWarning>
-        <body className={`${sora.variable} ${bebasNeue.variable} antialiased`}>
-          <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-            {children}
-          </ThemeProvider>
+        <body
+          className={`${inter.variable} ${sora.variable} ${bebasNeue.variable} antialiased`}
+        >
+          <Providers>{children}</Providers>
         </body>
       </html>
     </ViewTransitions>

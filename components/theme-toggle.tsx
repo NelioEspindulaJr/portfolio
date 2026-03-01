@@ -26,17 +26,21 @@ export function ModeToggle() {
       <DropdownMenuTrigger asChild>
         <Button
           variant="ghost"
-          size="icon-sm"
-          className="relative rounded-full border border-border/70 bg-background/70 backdrop-blur-sm transition-colors hover:bg-muted"
+          size="icon"
+          className="relative rounded-full bg-background/70 backdrop-blur-sm transition-colors hover:bg-muted"
         >
           <Sun
-            className={`size-3.5 transition-all ${
-              currentTheme === "dark" ? "scale-75 opacity-0" : "scale-100 opacity-100"
+            className={`transition-all ${
+              currentTheme === "dark"
+                ? "scale-75 opacity-0"
+                : "scale-100 opacity-100"
             }`}
           />
           <Moon
-            className={`absolute size-3.5 transition-all ${
-              currentTheme === "dark" ? "scale-100 opacity-100" : "scale-75 opacity-0"
+            className={`absolute transition-all ${
+              currentTheme === "dark"
+                ? "scale-100 opacity-100"
+                : "scale-75 opacity-0"
             }`}
           />
           <span className="sr-only">Toggle theme</span>
@@ -50,7 +54,9 @@ export function ModeToggle() {
             className="rounded-lg px-2 py-1.5 text-xs"
           >
             <span>{item.label}</span>
-            {theme === item.value ? <Check className="ml-auto size-3.5" /> : null}
+            {theme === item.value ? (
+              <Check className="ml-auto size-3.5" />
+            ) : null}
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>
