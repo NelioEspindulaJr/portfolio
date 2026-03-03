@@ -1,6 +1,6 @@
 import type { SVGProps } from "react";
 
-export function GithubIcon(props: SVGProps<SVGSVGElement>) {
+export function DiscordIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       role="img"

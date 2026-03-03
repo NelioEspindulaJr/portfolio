@@ -48,7 +48,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   return (
     <div className="min-h-screen">
       <SiteHeader />
-
       <main className="mx-auto w-full max-w-3xl px-6 py-16 md:py-20">
         <div className="space-y-5">
           <Button
@@ -122,7 +121,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           })}
         </article>
       </main>
-
       <SiteFooter />
     </div>
   );

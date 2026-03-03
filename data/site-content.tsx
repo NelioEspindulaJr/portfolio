@@ -44,8 +44,8 @@ export const siteContent = {
   ],
   email: "hello@nelioespindula.dev",
   nav: [
-    { href: "#about", label: "Sobre mim" },
-    { href: "#now", label: "Portflio" },
+    { href: "/#about", label: "Sobre mim" },
+    { href: "/#now", label: "Portflio" },
     { href: "/blog", label: "Blog" },
   ] satisfies NavItem[],
   social: [

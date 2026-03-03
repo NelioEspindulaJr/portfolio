@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import SignInAndOut from "./sign-in-and-out";
 
 import { siteContent } from "@/data/site-content";
 import { ModeToggle } from "@/components/theme-toggle";
+import Authentication from "./authentication/authentication";
 
 export function SiteHeader() {
   return (
@@ -29,7 +29,7 @@ export function SiteHeader() {
             ))}
             <ModeToggle />
           </nav>
-          <SignInAndOut />
+          <Authentication />
         </div>
       </div>
     </header>
