@@ -5,19 +5,16 @@ import { siteContent } from "@/data/site-content";
 
 import { BlogPostCard } from "@/components/site/blog-post-card";
 import { SectionHeading } from "@/components/site/section-heading";
-import { SiteHeader } from "@/components/site/site-header";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { socialIconMap } from "@/components/icons/social-icon-map";
 import Image from "next/image";
-import { SiteFooter } from "@/components/site/site-footer";
 
 const latestPosts = getLatestPosts(2);
 
 export default function Home() {
   return (
     <div className="min-h-screen">
-      <SiteHeader />
       <main className="mx-auto flex w-full max-w-4xl flex-col gap-16 px-6 py-16 md:py-20">
         <section className="space-y-6">
           <p className="text-xs tracking-[0.18em] text-muted-foreground uppercase">
@@ -117,7 +114,6 @@ export default function Home() {
           </div>
         </section>
       </main>
-      <SiteFooter />
     </div>
   );
 }

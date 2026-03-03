@@ -1,3 +1,4 @@
+import { getStoredToken } from "@/lib/auth-session";
 import axios, { AxiosInstance, AxiosResponse } from "axios";
 
 export default class ApiClient {
@@ -5,7 +6,7 @@ export default class ApiClient {
 
   constructor() {
     this.apiClient = axios.create({
-      baseURL: process.env.API_URL,
+      baseURL: process.env.NEXT_PUBLIC_API_URL,
       headers: {
         "Content-Type": "application/json",
       },
@@ -18,17 +19,21 @@ export default class ApiClient {
     data?: unknown,
     authorization?: string,
   ): Promise<AxiosResponse<T>> => {
-    return this.apiClient({
+    const token = authorization ?? getStoredToken();
+
+    const response = await this.apiClient({
       method,
       url,
       data,
-      ...(authorization
+      ...(token
         ? {
             headers: {
-              Authorization: `Bearer ${authorization}`,
+              Authorization: `Bearer ${token}`,
             },
           }
         : {}),
     });
+
+    return response;
   };
 }

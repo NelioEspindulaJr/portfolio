@@ -4,10 +4,8 @@ import { notFound } from "next/navigation";
 
 import { formatPostDate, getAllPosts, getPostBySlug } from "@/lib/blog";
 
-import { SiteHeader } from "@/components/site/site-header";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { SiteFooter } from "@/components/site/site-footer";
 
 type BlogPostPageProps = {
   params: Promise<{ slug: string }>;
@@ -47,7 +45,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <div className="min-h-screen">
-      <SiteHeader />
       <main className="mx-auto w-full max-w-3xl px-6 py-16 md:py-20">
         <div className="space-y-5">
           <Button
@@ -121,7 +118,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           })}
         </article>
       </main>
-      <SiteFooter />
     </div>
   );
 }

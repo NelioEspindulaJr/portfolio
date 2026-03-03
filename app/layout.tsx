@@ -5,6 +5,8 @@ import { ViewTransitions } from "next-view-transitions";
 
 import Providers from "@/components/providers/providers";
 import "./globals.css";
+import { SiteHeader } from "@/components/site/site-header";
+import { SiteFooter } from "@/components/site/site-footer";
 
 export const metadata: Metadata = {
   title: "Nelio Espindula Junior",
@@ -22,7 +24,11 @@ export default function RootLayout({
         <body
           className={`${inter.variable} ${sora.variable} ${bebasNeue.variable} antialiased`}
         >
-          <Providers>{children}</Providers>
+          <Providers>
+            <SiteHeader />
+            {children}
+            <SiteFooter />
+          </Providers>
         </body>
       </html>
     </ViewTransitions>

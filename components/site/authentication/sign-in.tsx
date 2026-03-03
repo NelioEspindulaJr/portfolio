@@ -1,3 +1,4 @@
+import { FormEvent, useState } from "react";
 import { usePathname } from "next/navigation";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "../../ui/button";
@@ -14,6 +15,8 @@ import { useDisclosure } from "@/components/hooks/use-disclosure";
 import SignUp from "./sign-up";
 import SocialButtons from "./social-buttons";
 import ForgotPassword from "./forgot-password";
+import { useLogin } from "@/components/api/auth/auth.hooks";
+import { useAuth } from "@/components/hooks/use-auth";
 
 export default function SignIn({
   open,
@@ -27,8 +30,35 @@ export default function SignIn({
   const { open: signUpOpen, onToggle: signUpOnToggle } = useDisclosure();
   const { open: forgotPasswordOpen, onToggle: forgotPasswordOnToggle } =
     useDisclosure();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const { mutate: login, isPending } = useLogin();
+  const { signIn, setIsAuthenticating } = useAuth();
 
   if (!isBlogPage) return null;
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setErrorMessage(null);
+    setIsAuthenticating(true);
+
+    login(
+      { email, password },
+      {
+        onSuccess: ({ data }) => {
+          signIn(data);
+          onToggle();
+        },
+        onError: () => {
+          setErrorMessage("Email ou senha inválidos.");
+        },
+        onSettled: () => {
+          setIsAuthenticating(false);
+        },
+      },
+    );
+  };
 
   return (
     <div>
@@ -42,7 +72,7 @@ export default function SignIn({
               </p>
             </div>
           </DialogTitle>
-          <form className={cn("flex flex-col gap-6")}>
+          <form className={cn("flex flex-col gap-6")} onSubmit={handleSubmit}>
             <FieldGroup>
               <Field>
                 <FieldLabel htmlFor="email">Email</FieldLabel>
@@ -51,6 +81,8 @@ export default function SignIn({
                   type="email"
                   placeholder="hello@dev.com"
                   required
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
                 />
               </Field>
               <Field>
@@ -71,10 +103,19 @@ export default function SignIn({
                   type="password"
                   placeholder="********"
                   required
+                  value={password}
+                  onChange={(event) => setPassword(event.target.value)}
                 />
               </Field>
+              {errorMessage ? (
+                <FieldDescription className="text-destructive">
+                  {errorMessage}
+                </FieldDescription>
+              ) : null}
               <Field>
-                <Button type="submit">Login</Button>
+                <Button type="submit" disabled={isPending}>
+                  {isPending ? "Entrando..." : "Login"}
+                </Button>
               </Field>
               <FieldSeparator>Ou continue com</FieldSeparator>
               <Field className="grid grid-cols-3 gap-4">

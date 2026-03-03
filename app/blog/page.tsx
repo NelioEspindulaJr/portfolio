@@ -4,7 +4,6 @@ import { getAllPosts } from "@/lib/blog";
 
 import { BlogPostCard } from "@/components/site/blog-post-card";
 import { SectionHeading } from "@/components/site/section-heading";
-import { SiteHeader } from "@/components/site/site-header";
 
 export const metadata: Metadata = {
   title: "Thoughts | Nelio Espindula",
@@ -16,7 +15,6 @@ export default function BlogPage() {
 
   return (
     <div className="min-h-screen">
-      <SiteHeader />
       <main className="mx-auto w-full max-w-4xl px-6 py-16 md:py-20">
         <SectionHeading
           eyebrow="Thoughts"
