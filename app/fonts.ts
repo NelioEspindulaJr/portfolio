@@ -1,4 +1,10 @@
-import { Bebas_Neue, Rock_3D } from "next/font/google";
+import { Bebas_Neue, Inter, Sora } from "next/font/google";
+
+export const sora = Sora({
+  variable: "--font-sora",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
 
 export const bebasNeue = Bebas_Neue({
   variable: "--font-bebas-neue",
@@ -6,8 +12,8 @@ export const bebasNeue = Bebas_Neue({
   weight: "400",
 });
 
-export const rock3d = Rock_3D({
-  variable: "--font-rock-3d",
+export const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
-  weight: "400",
+  weight: ["400", "500", "600", "700"],
 });

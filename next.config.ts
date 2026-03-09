@@ -6,6 +6,13 @@ const nextConfig: NextConfig = {
   experimental: {
     viewTransition: true,
   },
+  images: {
+    remotePatterns: [
+      new URL("https://zig.tickets/**"),
+      new URL("https://image.thum.io/**"),
+      new URL("https://nelioespindulajr.github.io/**"),
+    ],
+  },
 };
 
 export default nextConfig;

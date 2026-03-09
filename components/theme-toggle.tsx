@@ -1,7 +1,6 @@
 "use client";
 
-import { Moon, Sun } from "lucide-react";
-import * as motion from "motion/react-client";
+import { Check, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import type { ReactNode } from "react";
 
@@ -67,22 +66,54 @@ function MotionSwitch({
 }
 
 export function ModeToggle() {
-  const { setTheme, resolvedTheme } = useTheme();
-  const isDark = resolvedTheme === "dark";
+  const { setTheme, theme, resolvedTheme } = useTheme();
 
-  const toggleTheme = () => {
-    setTheme(isDark ? "light" : "dark");
-  };
+  const currentTheme = theme === "system" ? resolvedTheme : theme;
+  const items = [
+    { value: "light", label: "Light" },
+    { value: "dark", label: "Dark" },
+    { value: "system", label: "System" },
+  ] as const;
 
   return (
-    <div className="absolute bottom-[calc(max(0.25rem,0.5vmin))] px-[max(20px,4vmin)] w-dvw z-50 flex items-center flex-row justify-center gap-2">
-      <MotionSwitch
-        checked={isDark}
-        onToggle={toggleTheme}
-        leftContent={<Sun className="size-3" />}
-        rightContent={<Moon className="size-3" />}
-        srLabel="Alternar tema entre claro e escuro"
-      />
-    </div>
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button
+          variant="ghost"
+          size="icon"
+          className="relative rounded-full bg-background/70 backdrop-blur-sm transition-colors hover:bg-muted"
+        >
+          <Sun
+            className={`transition-all ${
+              currentTheme === "dark"
+                ? "scale-75 opacity-0"
+                : "scale-100 opacity-100"
+            }`}
+          />
+          <Moon
+            className={`absolute transition-all ${
+              currentTheme === "dark"
+                ? "scale-100 opacity-100"
+                : "scale-75 opacity-0"
+            }`}
+          />
+          <span className="sr-only">Toggle theme</span>
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end" className="min-w-32 rounded-xl p-1">
+        {items.map((item) => (
+          <DropdownMenuItem
+            key={item.value}
+            onClick={() => setTheme(item.value)}
+            className="rounded-lg px-2 py-1.5 text-xs"
+          >
+            <span>{item.label}</span>
+            {theme === item.value ? (
+              <Check className="ml-auto size-3.5" />
+            ) : null}
+          </DropdownMenuItem>
+        ))}
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 }
