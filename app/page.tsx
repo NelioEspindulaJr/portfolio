@@ -1,16 +1,13 @@
 import Link from "next/link";
 
-import { getLatestPosts } from "@/lib/blog";
 import { siteContent } from "@/data/site-content";
 
-import { BlogPostCard } from "@/components/site/blog-post-card";
 import { SectionHeading } from "@/components/site/section-heading";
-import { Button } from "@/components/ui/button";
+
 import { Separator } from "@/components/ui/separator";
 import { socialIconMap } from "@/components/icons/social-icon-map";
 import Image from "next/image";
-
-const latestPosts = getLatestPosts(2);
+import ProjectItem from "@/components/site/project-item";
 
 export default function Home() {
   return (
@@ -79,7 +76,7 @@ export default function Home() {
         <Separator />
 
         <section id="now" className="space-y-5">
-          <SectionHeading eyebrow="Portfólio" title="Meu foco principal" />
+          <SectionHeading eyebrow="Este Portfólio" title="Meu foco principal" />
           <ul className="space-y-3 text-base text-muted-foreground">
             {siteContent.now.map((item) => (
               <li key={item} className="flex items-start gap-3">
@@ -97,21 +94,20 @@ export default function Home() {
 
         <section className="space-y-6">
           <div className="flex items-end justify-between gap-4">
-            <SectionHeading
-              eyebrow="Blog"
-              title="Posts recentes"
-              description="Notas, reflexões, ideias, leitura e aprendizados."
-            />
-            <Button asChild variant="ghost" className="shrink-0">
-              <Link href="/blog">All posts</Link>
-            </Button>
+            <SectionHeading eyebrow="Projetos" title="Trabalhos recentes" />
           </div>
+          <ProjectItem
+            name="Zig Tickets"
+            url="https://zig.tickets/"
+            description="Atuei como fullstack no desenvolvimento e evolução do produto, integrando APIs, construindo interfaces intuitivas e garantindo performance e confiabilidade em fluxos de venda e validação de ingressos."
+          />
 
-          <div className="grid gap-4 md:grid-cols-2">
-            {latestPosts.map((post) => (
-              <BlogPostCard key={post.slug} post={post} />
-            ))}
-          </div>
+          <ProjectItem
+            name="TISS xml"
+            url="https://nelioespindulajr.github.io/tiss-xml/"
+            iconDir="/pommernlab.png"
+            description="Pequeno projeto de criação e geração do padrão da ANS para troca eletrônica de dados, o TISS (Troca de Informação em Saúde Suplementar. Facilitando de maneira dinâmica a criação do documento."
+          />
         </section>
       </main>
     </div>
