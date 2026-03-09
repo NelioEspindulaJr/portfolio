@@ -35,10 +35,10 @@ export default function ProjectItem({
             rel="noreferrer noopener"
             aria-label={`Abrir ${name}`}
           >
-            <ItemMedia variant="image" className="rounded-md">
+            <ItemMedia variant="image" className="bg-transparent">
               <Image
-                width={16}
-                height={16}
+                width={32}
+                height={32}
                 src={iconDir ? `${url}${iconDir}` : `${url}favicon.ico`}
                 alt={`Logo ${name}`}
                 loading="lazy"
@@ -57,7 +57,7 @@ export default function ProjectItem({
               src={`https://image.thum.io/get/width/900/noanimate/${url}`}
               alt={`Preview do site ${name}`}
               className="h-44 w-full object-cover"
-              width={900}
+              width={320}
               height={176}
               loading="lazy"
             />

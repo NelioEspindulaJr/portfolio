@@ -103,6 +103,12 @@ export default function Home() {
           />
 
           <ProjectItem
+            name="LabAssyst"
+            url="https://labassyst.com.br/"
+            description="Desenvolvi um Sistema de Informação Laboratorial completo para laboratórios de pequeno e médio porte em um modelo SAAS multi-tenant voltado para usabilidade e qualidade."
+          />
+
+          <ProjectItem
             name="TISS xml"
             url="https://nelioespindulajr.github.io/tiss-xml/"
             iconDir="/pommernlab.png"

@@ -15,17 +15,9 @@ export const metadata: Metadata = {
 
 type RootLayoutProps = Readonly<{
   children: React.ReactNode;
-  params: Promise<{
-    lang: string;
-  }>;
 }>;
 
-export default async function RootLayout({
-  children,
-  params,
-}: RootLayoutProps) {
-  const { lang } = await params;
-
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <ViewTransitions>
       <html lang="pt-BR" suppressHydrationWarning>
