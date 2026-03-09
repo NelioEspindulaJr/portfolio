@@ -92,7 +92,7 @@ export default function Home() {
 
         <Separator />
 
-        <section className="space-y-6">
+        <section id="projects" className="space-y-6">
           <div className="flex items-end justify-between gap-4">
             <SectionHeading eyebrow="Projetos" title="Trabalhos recentes" />
           </div>

@@ -34,7 +34,7 @@ export const siteContent = {
   headline: "Olá, eu sou o ",
   headlineName: "Nélio",
   intro:
-    "Prazer em te ter por aqui, esse é meu espaço pessoal. Eu o uso para compartilhar o que estou aprendendo, o que estou contruindo, ideias, rascunhos, esboços ou qualquer outra coisa que me vier à mente.",
+    "Bem vindo ao meu site! Nesse espaço eu irei compartilhar o que estou aprendendo, o que estou contruindo, ideias, rascunhos, esboços e outros assuntos relacionados ao meu trabalho e tecnologia.",
   about:
     "Sou formado como Cientista da Computação e atuo como desenvolvedor fullstack, equilibrando interfaces bem pensadas com sistemas backend sólidos e organizados. Acredito em progresso constante, código claro e soluções que priorizam simplicidade, manutenção e boas experiências digitais, tanto para quem usa quanto para quem desenvolve.",
   now: [
