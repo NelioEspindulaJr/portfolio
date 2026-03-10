@@ -7,10 +7,13 @@ import SignIn from "./sign-in";
 import { useDisclosure } from "@/components/hooks/use-disclosure";
 import { useAuth } from "@/components/hooks/use-auth";
 import DropdownMenuAvatar from "@/components/ui/dropdown-menu-avatar";
+import { usePathname } from "next/navigation";
+import { trackEvent } from "@/lib/analytics";
 
 export default function Authentication() {
   const { open: signInOpen, onToggle: signInOnToggle } = useDisclosure();
   const { user } = useAuth();
+  const pathname = usePathname();
 
   return !!user ? (
     <DropdownMenuAvatar avatar={user.avatarUrl} />
@@ -20,7 +23,12 @@ export default function Authentication() {
         variant="ghost"
         size="icon"
         className="rounded-full"
-        onClick={signInOnToggle}
+        onClick={() => {
+          trackEvent("auth_dialog_open", {
+            location: pathname,
+          });
+          signInOnToggle();
+        }}
       >
         <Avatar>
           <AvatarImage alt="authentication" />

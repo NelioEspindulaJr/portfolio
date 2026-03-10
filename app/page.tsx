@@ -1,18 +1,36 @@
-import Link from "next/link";
+import type { Metadata } from "next";
 
 import { siteContent } from "@/data/site-content";
 
+import { TrackedLink } from "@/components/analytics/tracked-link";
 import { SectionHeading } from "@/components/site/section-heading";
+import { JsonLd } from "@/components/seo/json-ld";
 
 import { Separator } from "@/components/ui/separator";
 import { socialIconMap } from "@/components/icons/social-icon-map";
 import Image from "next/image";
 import ProjectItem from "@/components/site/project-item";
+import {
+  createCollectionPageJsonLd,
+  createMetadata,
+  siteConfig,
+} from "@/lib/seo";
+
+export const metadata: Metadata = createMetadata({
+  path: "/",
+});
 
 export default function Home() {
   return (
     <div className="min-h-screen">
       <main className="mx-auto flex w-full max-w-4xl flex-col gap-16 px-6 py-16 md:py-20">
+        <JsonLd
+          data={createCollectionPageJsonLd({
+            title: siteConfig.title,
+            description: siteConfig.description,
+            path: "/",
+          })}
+        />
         <section className="space-y-6">
           <p className="text-xs tracking-[0.18em] text-muted-foreground uppercase">
             {siteContent.role}
@@ -36,12 +54,17 @@ export default function Home() {
             />
 
             <span aria-hidden="true">·</span>
-            <Link
+            <TrackedLink
               href={`mailto:${siteContent.email}`}
               className="text-foreground underline-offset-4 hover:underline"
+              event="contact_email_click"
+              payload={{
+                location: "home_hero",
+                contact_method: "email",
+              }}
             >
               {siteContent.email}
-            </Link>
+            </TrackedLink>
           </div>
         </section>
 
@@ -58,16 +81,21 @@ export default function Home() {
               const Icon = socialIconMap[social.id];
 
               return (
-                <Link
+                <TrackedLink
                   key={social.id}
                   href={social.href}
                   aria-label={social.label}
                   className="text-foreground transition-colors hover:text-muted-foreground"
                   target="_blank"
                   rel="noreferrer noopener"
+                  event="social_link_click"
+                  payload={{
+                    location: "home_about",
+                    social_network: social.id,
+                  }}
                 >
                   <Icon className="size-6" />
-                </Link>
+                </TrackedLink>
               );
             })}
           </div>

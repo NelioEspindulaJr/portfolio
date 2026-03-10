@@ -4,6 +4,7 @@ import { useSocialLoginCallback } from "@/components/api/auth/auth.hooks";
 import { SocialAuthProviders } from "@/components/api/auth/auth.types";
 import { useAuth } from "@/components/hooks/use-auth";
 import { Button } from "@/components/ui/button";
+import { trackEvent } from "@/lib/analytics";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useRef } from "react";
 
@@ -71,8 +72,16 @@ export default function CallbackPage() {
       { provider, code },
       {
         onSuccess: ({ data }) => {
+          trackEvent("auth_callback_success", {
+            provider,
+          });
           signIn(data);
           router.replace("/blog", { scroll: false });
+        },
+        onError: () => {
+          trackEvent("auth_callback_error", {
+            provider,
+          });
         },
         onSettled: () => {
           setIsAuthenticating(false);
@@ -94,6 +103,15 @@ export default function CallbackPage() {
     : isError
       ? "Falha ao concluir autenticação. Tente novamente."
       : null;
+
+  useEffect(() => {
+    if (!callbackValidationError) return;
+
+    trackEvent("auth_callback_validation_error", {
+      provider: provider ?? "unknown",
+      has_oauth_error: Boolean(oauthError),
+    });
+  }, [callbackValidationError, oauthError, provider]);
 
   if (!errorMessage) return null;
 

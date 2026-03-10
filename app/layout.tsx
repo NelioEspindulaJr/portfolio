@@ -7,10 +7,22 @@ import Providers from "@/components/providers/providers";
 import "./globals.css";
 import { SiteHeader } from "@/components/site/site-header";
 import { SiteFooter } from "@/components/site/site-footer";
+import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
+import { JsonLd } from "@/components/seo/json-ld";
+import {
+  createMetadata,
+  createPersonJsonLd,
+  createWebsiteJsonLd,
+  siteConfig,
+} from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Nelio Espindula Junior",
-  description: "Meu portfólio e espaço pessoal para expressão.",
+  ...createMetadata(),
+  applicationName: siteConfig.shortName,
+  title: {
+    default: siteConfig.title,
+    template: `%s | ${siteConfig.shortName}`,
+  },
 };
 
 type RootLayoutProps = Readonly<{
@@ -24,11 +36,14 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <body
           className={`${inter.variable} ${sora.variable} ${bebasNeue.variable} antialiased`}
         >
+          <GoogleTagManager gtmId="GTM-5TZ2QBSJ" />
+          <JsonLd data={[createWebsiteJsonLd(), createPersonJsonLd()]} />
           <Providers>
             <SiteHeader />
             {children}
             <SiteFooter />
           </Providers>
+          <GoogleAnalytics gaId="G-826MPJLXRR" />
         </body>
       </html>
     </ViewTransitions>

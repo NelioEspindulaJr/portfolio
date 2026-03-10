@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { formatPostDate, getAllPosts, getPostBySlug } from "@/lib/blog";
 
+import { TrackedLink } from "@/components/analytics/tracked-link";
+import { JsonLd } from "@/components/seo/json-ld";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import {
+  createArticleJsonLd,
+  createArticleMetadata,
+  createMetadata,
+} from "@/lib/seo";
 
 type BlogPostPageProps = {
   params: Promise<{ slug: string }>;
@@ -24,15 +30,14 @@ export async function generateMetadata({
   const post = getPostBySlug(slug);
 
   if (!post) {
-    return {
-      title: "Post not found",
-    };
+    return createMetadata({
+      title: "Post não encontrado",
+      path: `/blog/${slug}`,
+      noIndex: true,
+    });
   }
 
-  return {
-    title: `${post.title} | Thoughts`,
-    description: post.summary,
-  };
+  return createArticleMetadata({ post });
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
@@ -52,7 +57,15 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             variant="ghost"
             className="-ml-4 text-muted-foreground"
           >
-            <Link href="/blog">← Back to thoughts</Link>
+            <TrackedLink
+              href="/blog"
+              event="blog_back_navigation_click"
+              payload={{
+                source_post: post.slug,
+              }}
+            >
+              ← Back to thoughts
+            </TrackedLink>
           </Button>
 
           <p className="text-xs tracking-[0.18em] text-muted-foreground uppercase">
@@ -69,6 +82,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </div>
 
         <Separator className="my-8" />
+
+        <JsonLd data={createArticleJsonLd(post)} />
 
         <article className="space-y-6">
           {post.blocks.map((block, index) => {

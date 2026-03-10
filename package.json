@@ -17,7 +17,7 @@
     "animate-ui"
   ],
   "description": "My portfolio website",
-  "packageManager": "pnpm@10.30.0",
+  "packageManager": "pnpm@10.32.0",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -25,6 +25,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@next/third-parties": "^16.1.6",
     "@tanstack/react-query": "^5.90.21",
     "axios": "^1.13.6",
     "class-variance-authority": "^0.7.1",
@@ -33,6 +34,7 @@
     "motion": "^12.34.0",
     "negotiator": "^1.0.0",
     "next": "16.1.6",
+    "next-intl": "^4.8.3",
     "next-themes": "^0.4.6",
     "next-view-transitions": "^0.3.5",
     "radix-ui": "^1.4.3",

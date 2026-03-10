@@ -1,6 +1,6 @@
-import Link from "next/link";
 import Image from "next/image";
 
+import { TrackedLink } from "@/components/analytics/tracked-link";
 import {
   HoverCard,
   HoverCardContent,
@@ -29,11 +29,17 @@ export default function ProjectItem({
     <Item variant="outline">
       <HoverCard openDelay={150} closeDelay={100}>
         <HoverCardTrigger asChild>
-          <Link
+          <TrackedLink
             href={url}
             target="_blank"
             rel="noreferrer noopener"
             aria-label={`Abrir ${name}`}
+            event="project_click"
+            payload={{
+              location: "project_logo",
+              project_name: name,
+              project_url: url,
+            }}
           >
             <ItemMedia variant="image" className="bg-transparent">
               <Image
@@ -44,14 +50,20 @@ export default function ProjectItem({
                 loading="lazy"
               />
             </ItemMedia>
-          </Link>
+          </TrackedLink>
         </HoverCardTrigger>
         <HoverCardContent align="start" className="w-80 p-2">
-          <Link
-            href="${url}"
+          <TrackedLink
+            href={url}
             target="_blank"
             rel="noreferrer noopener"
             className="block overflow-hidden rounded-md"
+            event="project_preview_click"
+            payload={{
+              location: "project_preview",
+              project_name: name,
+              project_url: url,
+            }}
           >
             <Image
               src={`https://image.thum.io/get/width/900/noanimate/${url}`}
@@ -61,20 +73,26 @@ export default function ProjectItem({
               height={176}
               loading="lazy"
             />
-          </Link>
+          </TrackedLink>
         </HoverCardContent>
       </HoverCard>
 
       <ItemContent>
         <ItemTitle>
-          <Link
+          <TrackedLink
             href={url}
             target="_blank"
             rel="noreferrer noopener"
             className="underline-offset-4 hover:underline"
+            event="project_click"
+            payload={{
+              location: "project_title",
+              project_name: name,
+              project_url: url,
+            }}
           >
             {name}
-          </Link>
+          </TrackedLink>
         </ItemTitle>
         <ItemDescription>{description}</ItemDescription>
       </ItemContent>
