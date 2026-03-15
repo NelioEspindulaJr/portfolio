@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 
-import { siteContent } from "@/data/site-content";
+import { getProjects, getSiteContent } from "@/data/site-content";
 
 import { TrackedLink } from "@/components/analytics/tracked-link";
 import { SectionHeading } from "@/components/site/section-heading";
@@ -13,22 +14,42 @@ import ProjectItem from "@/components/site/project-item";
 import {
   createCollectionPageJsonLd,
   createMetadata,
+  getLocalizedPath,
   siteConfig,
 } from "@/lib/seo";
 
-export const metadata: Metadata = createMetadata({
-  path: "/",
-});
+type HomePageProps = {
+  params: Promise<{ locale: string }>;
+};
 
-export default function Home() {
+export async function generateMetadata({
+  params,
+}: HomePageProps): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Metadata" });
+
+  return createMetadata({
+    description: t("homeDescription"),
+    path: getLocalizedPath("/", locale),
+    locale,
+  });
+}
+
+export default async function Home({ params }: HomePageProps) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Home" });
+  const siteContent = getSiteContent(t);
+  const projects = getProjects(t);
+
   return (
     <div className="min-h-screen">
       <main className="mx-auto flex w-full max-w-4xl flex-col gap-16 px-6 py-16 md:py-20">
         <JsonLd
           data={createCollectionPageJsonLd({
             title: siteConfig.title,
-            description: siteConfig.description,
-            path: "/",
+            description: siteContent.intro,
+            path: getLocalizedPath("/", locale),
+            locale,
           })}
         />
         <section className="space-y-6">
@@ -47,7 +68,7 @@ export default function Home() {
           <div className="flex flex-wrap gap-3 text-sm text-muted-foreground">
             <Image
               src="/brazil.svg"
-              alt="brazil"
+              alt={siteContent.countryLabel}
               width={25}
               height={19}
               unoptimized
@@ -71,7 +92,10 @@ export default function Home() {
         <Separator />
 
         <section id="about" className="space-y-5">
-          <SectionHeading eyebrow="Sobre mim" title="Quem eu sou" />
+          <SectionHeading
+            eyebrow={t("sections.aboutEyebrow")}
+            title={t("sections.aboutTitle")}
+          />
           <p className="max-w-3xl text-base leading-relaxed text-muted-foreground md:text-lg">
             {siteContent.about}
           </p>
@@ -104,7 +128,10 @@ export default function Home() {
         <Separator />
 
         <section id="now" className="space-y-5">
-          <SectionHeading eyebrow="Este Portfólio" title="Meu foco principal" />
+          <SectionHeading
+            eyebrow={t("sections.nowEyebrow")}
+            title={t("sections.nowTitle")}
+          />
           <ul className="space-y-3 text-base text-muted-foreground">
             {siteContent.now.map((item) => (
               <li key={item} className="flex items-start gap-3">
@@ -122,26 +149,14 @@ export default function Home() {
 
         <section id="projects" className="space-y-6">
           <div className="flex items-end justify-between gap-4">
-            <SectionHeading eyebrow="Projetos" title="Trabalhos recentes" />
+            <SectionHeading
+              eyebrow={t("sections.projectsEyebrow")}
+              title={t("sections.projectsTitle")}
+            />
           </div>
-          <ProjectItem
-            name="Zig Tickets"
-            url="https://zig.tickets/"
-            description="Atuei como fullstack no desenvolvimento e evolução do produto, integrando APIs, construindo interfaces intuitivas e garantindo performance e confiabilidade em fluxos de venda e validação de ingressos."
-          />
-
-          <ProjectItem
-            name="LabAssyst"
-            url="https://labassyst.com.br/"
-            description="Desenvolvi um Sistema de Informação Laboratorial completo para laboratórios de pequeno e médio porte em um modelo SAAS multi-tenant voltado para usabilidade e qualidade."
-          />
-
-          <ProjectItem
-            name="TISS xml"
-            url="https://nelioespindulajr.github.io/tiss-xml/"
-            iconDir="/pommernlab.png"
-            description="Pequeno projeto de criação e geração do padrão da ANS para troca eletrônica de dados, o TISS (Troca de Informação em Saúde Suplementar. Facilitando de maneira dinâmica a criação do documento."
-          />
+          {projects.map((project) => (
+            <ProjectItem key={project.name} {...project} />
+          ))}
         </section>
       </main>
     </div>

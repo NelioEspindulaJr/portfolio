@@ -1,15 +1,14 @@
 "use client";
 
-import Link, { type LinkProps } from "next/link";
 import type { ComponentPropsWithoutRef, MouseEvent } from "react";
 
+import { Link } from "@/i18n/navigation";
 import { trackEvent } from "@/lib/analytics";
 
-type TrackedLinkProps = LinkProps &
-  Omit<ComponentPropsWithoutRef<"a">, keyof LinkProps> & {
-    event: string;
-    payload?: Record<string, string | number | boolean | undefined>;
-  };
+type TrackedLinkProps = ComponentPropsWithoutRef<typeof Link> & {
+  event: string;
+  payload?: Record<string, string | number | boolean | undefined>;
+};
 
 export function TrackedLink({
   event,

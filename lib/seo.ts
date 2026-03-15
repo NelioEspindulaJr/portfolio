@@ -43,14 +43,33 @@ type MetadataInput = {
   keywords?: string[];
   image?: string;
   noIndex?: boolean;
+  locale?: string;
 };
 
 type ArticleMetadataInput = {
   post: BlogPost;
+  locale?: string;
+  titleSuffix?: string;
 };
 
 export function absoluteUrl(path = "/") {
   return new URL(path, siteConfig.url).toString();
+}
+
+export function getLocalizedPath(path = "/", locale = "pt-br") {
+  if (locale === "pt-br") {
+    return path;
+  }
+
+  return path === "/" ? "/en" : `/en${path}`;
+}
+
+export function getLanguageTag(locale = "pt-br") {
+  return locale === "pt-br" ? "pt-BR" : "en-US";
+}
+
+export function getOpenGraphLocale(locale = "pt-br") {
+  return locale === "pt-br" ? "pt_BR" : "en_US";
 }
 
 export function createMetadata({
@@ -60,6 +79,7 @@ export function createMetadata({
   keywords = [],
   image = siteConfig.ogImage.path,
   noIndex = false,
+  locale = "pt-br",
 }: MetadataInput = {}): Metadata {
   const resolvedTitle = title ?? siteConfig.title;
   const url = absoluteUrl(path);
@@ -83,7 +103,7 @@ export function createMetadata({
       description,
       url,
       siteName: siteConfig.name,
-      locale: siteConfig.locale,
+      locale: getOpenGraphLocale(locale),
       type: "website",
       images,
     },
@@ -106,8 +126,10 @@ export function createMetadata({
 
 export function createArticleMetadata({
   post,
+  locale = "pt-br",
+  titleSuffix = "Blog",
 }: ArticleMetadataInput): Metadata {
-  const path = `/blog/${post.slug}`;
+  const path = getLocalizedPath(`/blog/${post.slug}`, locale);
   const url = absoluteUrl(path);
   const images = [
     {
@@ -118,17 +140,18 @@ export function createArticleMetadata({
 
   return {
     ...createMetadata({
-      title: `${post.title} | Blog`,
+      title: `${post.title} | ${titleSuffix}`,
       description: post.summary,
       path,
       keywords: post.tags,
+      locale,
     }),
     openGraph: {
       title: post.title,
       description: post.summary,
       url,
       siteName: siteConfig.name,
-      locale: siteConfig.locale,
+      locale: getOpenGraphLocale(locale),
       type: "article",
       images,
       publishedTime: post.publishedAt,
@@ -150,13 +173,13 @@ export function createPersonJsonLd() {
   };
 }
 
-export function createWebsiteJsonLd() {
+export function createWebsiteJsonLd(locale = "pt-br") {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: siteConfig.name,
     url: siteConfig.url,
-    inLanguage: "pt-BR",
+    inLanguage: getLanguageTag(locale),
     author: {
       "@type": "Person",
       name: siteConfig.author.name,
@@ -168,13 +191,17 @@ export function createCollectionPageJsonLd({
   title,
   description,
   path,
-}: Required<Pick<MetadataInput, "title" | "description" | "path">>) {
+  locale = "pt-br",
+}: Required<Pick<MetadataInput, "title" | "description" | "path">> & {
+  locale?: string;
+}) {
   return {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     name: title,
     description,
     url: absoluteUrl(path),
+    inLanguage: getLanguageTag(locale),
     isPartOf: {
       "@type": "WebSite",
       name: siteConfig.name,
@@ -183,7 +210,7 @@ export function createCollectionPageJsonLd({
   };
 }
 
-export function createArticleJsonLd(post: BlogPost) {
+export function createArticleJsonLd(post: BlogPost, locale = "pt-br") {
   return {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -193,7 +220,7 @@ export function createArticleJsonLd(post: BlogPost) {
     dateModified: post.publishedAt,
     articleSection: post.category,
     keywords: post.tags.join(", "),
-    url: absoluteUrl(`/blog/${post.slug}`),
+    url: absoluteUrl(getLocalizedPath(`/blog/${post.slug}`, locale)),
     author: {
       "@type": "Person",
       name: siteConfig.author.name,
@@ -204,6 +231,6 @@ export function createArticleJsonLd(post: BlogPost) {
       name: siteConfig.author.name,
       url: siteConfig.author.url,
     },
-    mainEntityOfPage: absoluteUrl(`/blog/${post.slug}`),
+    mainEntityOfPage: absoluteUrl(getLocalizedPath(`/blog/${post.slug}`, locale)),
   };
 }

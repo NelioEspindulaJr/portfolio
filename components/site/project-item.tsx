@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 import { TrackedLink } from "@/components/analytics/tracked-link";
 import {
@@ -25,6 +26,8 @@ export default function ProjectItem({
   description: string;
   iconDir?: string;
 }) {
+  const t = useTranslations("Projects.item");
+
   return (
     <Item variant="outline">
       <HoverCard openDelay={150} closeDelay={100}>
@@ -33,7 +36,7 @@ export default function ProjectItem({
             href={url}
             target="_blank"
             rel="noreferrer noopener"
-            aria-label={`Abrir ${name}`}
+            aria-label={t("openAria", { name })}
             event="project_click"
             payload={{
               location: "project_logo",
@@ -46,7 +49,7 @@ export default function ProjectItem({
                 width={32}
                 height={32}
                 src={iconDir ? `${url}${iconDir}` : `${url}favicon.ico`}
-                alt={`Logo ${name}`}
+                alt={t("logoAlt", { name })}
                 loading="lazy"
               />
             </ItemMedia>
@@ -67,7 +70,7 @@ export default function ProjectItem({
           >
             <Image
               src={`https://image.thum.io/get/width/900/noanimate/${url}`}
-              alt={`Preview do site ${name}`}
+              alt={t("previewAlt", { name })}
               className="h-44 w-full object-cover"
               width={320}
               height={176}

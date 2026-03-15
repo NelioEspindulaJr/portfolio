@@ -1,12 +1,17 @@
 "use client";
 
-import { siteContent } from "@/data/site-content";
+import { useTranslations } from "next-intl";
+
+import { getSiteContent } from "@/data/site-content";
 import { ModeToggle } from "@/components/theme-toggle";
 import Authentication from "./authentication/authentication";
-import { usePathname } from "next/navigation";
 import { TrackedLink } from "@/components/analytics/tracked-link";
+import { usePathname } from "@/i18n/navigation";
+import { LanguageSwitcher } from "./language-switcher";
 
 export function SiteHeader() {
+  const t = useTranslations("Home");
+  const siteContent = getSiteContent(t);
   const pathname = usePathname();
   const isBlogPage = pathname.startsWith("/blog");
 
@@ -24,7 +29,7 @@ export function SiteHeader() {
         >
           {siteContent.name}
         </TrackedLink>
-        <div className="flex items-center gap-5">
+        <div className="flex items-center gap-3">
           <nav className="hidden items-center gap-5 md:flex">
             {siteContent.nav.map((item) => (
               <TrackedLink
@@ -40,8 +45,9 @@ export function SiteHeader() {
                 {item.label}
               </TrackedLink>
             ))}
-            <ModeToggle />
           </nav>
+          <LanguageSwitcher />
+          <ModeToggle />
           {isBlogPage && <Authentication />}
         </div>
       </div>

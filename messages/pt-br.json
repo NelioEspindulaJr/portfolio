@@ -1,0 +1,205 @@
+{
+  "Metadata": {
+    "homeDescription": "Portfólio pessoal de Nélio Espíndula Junior com projetos, textos e experimentos sobre desenvolvimento fullstack, produto e tecnologia.",
+    "blogTitle": "Blog",
+    "blogDescription": "Artigos, notas e reflexões sobre desenvolvimento, produto e tecnologia.",
+    "blogKeywords": ["blog", "artigos", "engenharia de software"],
+    "notFoundTitle": "Página não encontrada",
+    "notFoundDescription": "A página que você tentou acessar não existe, foi movida ou nunca fez parte deste portfólio.",
+    "postNotFoundTitle": "Post não encontrado",
+    "postTitleSuffix": "Blog"
+  },
+  "LanguageSwitcher": {
+    "label": "Selecionar idioma",
+    "pt-br": "Português",
+    "en": "Inglês",
+    "shortPt": "PT",
+    "shortEn": "EN"
+  },
+  "Home": {
+    "content": {
+      "name": "Nélio Espíndula Junior",
+      "role": "Um canto qualquer na internet",
+      "headline": "Olá, eu sou o ",
+      "headlineName": "Nélio",
+      "intro": "Bem-vindo ao meu site. Neste espaço eu compartilho o que estou aprendendo, o que estou construindo, ideias, rascunhos, esboços e outros assuntos relacionados ao meu trabalho e tecnologia.",
+      "about": "Sou formado em Ciência da Computação e atuo como desenvolvedor fullstack, equilibrando interfaces bem pensadas com sistemas backend sólidos e organizados. Acredito em progresso constante, código claro e soluções que priorizam simplicidade, manutenção e boas experiências digitais, tanto para quem usa quanto para quem desenvolve.",
+      "now": [
+        "Escrever notas, pensamentos e experiências como desenvolvedor.",
+        "Melhorar este site como um portfólio pessoal de longo prazo.",
+        "Manter as coisas simples, minimalistas e úteis."
+      ],
+      "email": "hello@nelioespindula.dev",
+      "countryLabel": "Brasil",
+      "nav": [
+        { "href": "/#about", "label": "Sobre mim" },
+        { "href": "/#now", "label": "Portfólio" },
+        { "href": "/#projects", "label": "Projetos" }
+      ],
+      "social": [
+        {
+          "id": "github",
+          "label": "GitHub",
+          "href": "https://github.com/NelioEspindulaJr"
+        },
+        {
+          "id": "linkedin",
+          "label": "LinkedIn",
+          "href": "https://linkedin.com/in/nelioespindulajunior"
+        },
+        {
+          "id": "instagram",
+          "label": "Instagram",
+          "href": "https://instagram.com/njuniorespindula/"
+        }
+      ]
+    },
+    "sections": {
+      "aboutEyebrow": "Sobre mim",
+      "aboutTitle": "Quem eu sou",
+      "nowEyebrow": "Este portfólio",
+      "nowTitle": "Meu foco principal",
+      "projectsEyebrow": "Projetos",
+      "projectsTitle": "Trabalhos recentes"
+    },
+    "projects": [
+      {
+        "name": "Zig Tickets",
+        "url": "https://zig.tickets/",
+        "description": "Atuei como fullstack no desenvolvimento e evolução do produto, integrando APIs, construindo interfaces intuitivas e garantindo performance e confiabilidade em fluxos de venda e validação de ingressos."
+      },
+      {
+        "name": "LabAssyst",
+        "url": "https://labassyst.com.br/",
+        "description": "Desenvolvi um Sistema de Informação Laboratorial completo para laboratórios de pequeno e médio porte em um modelo SaaS multi-tenant voltado para usabilidade e qualidade."
+      },
+      {
+        "name": "TISS xml",
+        "url": "https://nelioespindulajr.github.io/tiss-xml/",
+        "iconDir": "/pommernlab.png",
+        "description": "Pequeno projeto de criação e geração do padrão da ANS para troca eletrônica de dados, o TISS (Troca de Informação em Saúde Suplementar), facilitando de maneira dinâmica a criação do documento."
+      }
+    ]
+  },
+  "Projects": {
+    "item": {
+      "openAria": "Abrir {name}",
+      "logoAlt": "Logo de {name}",
+      "previewAlt": "Prévia do site {name}"
+    }
+  },
+  "NotFound": {
+    "eyebrow": "Erro 404 / Página não encontrada",
+    "title": "Essa rota saiu do mapa.",
+    "description": "A página que você tentou acessar não existe, foi movida ou nunca fez parte deste portfólio. Volte para o início e siga por um caminho conhecido.",
+    "backHome": "Voltar para a home"
+  },
+  "Blog": {
+    "listing": {
+      "eyebrow": "Reflexões",
+      "title": "Arquivo de textos",
+      "description": "Um registro pessoal de ideias, experimentos e perguntas."
+    },
+    "card": {
+      "readCta": "Ler"
+    },
+    "post": {
+      "backCta": "← Voltar para os textos"
+    },
+    "posts": [
+      {
+        "slug": "building-ux-that-feels-intentional",
+        "title": "Construindo UX com intencionalidade",
+        "summary": "Pequenas escolhas de interface que moldam silenciosamente como as pessoas se sentem ao usar um produto.",
+        "category": "UX",
+        "publishedAt": "2026-02-20",
+        "readTime": "6 min de leitura",
+        "tags": ["UX", "Frontend", "Produto"],
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "A maioria das pessoas não consegue explicar por que uma interface parece certa, mas percebe isso muito rápido. Um bom UX geralmente nasce da redução de fricção e de um ritmo claro."
+          },
+          {
+            "type": "heading",
+            "text": "O que significa ser intencional"
+          },
+          {
+            "type": "paragraph",
+            "text": "Uma interface intencional oferece um caminho. Ela evita ruído, respeita a atenção e se comporta de maneiras previsíveis para quem usa."
+          },
+          {
+            "type": "list",
+            "items": [
+              "Projete primeiro para compreensão.",
+              "Mantenha as interações consistentes.",
+              "Use movimento apenas quando ele ajudar no entendimento."
+            ]
+          },
+          {
+            "type": "quote",
+            "text": "As pessoas perdoam visuais mínimos. O que elas não perdoam é confusão."
+          }
+        ]
+      },
+      {
+        "slug": "my-nextjs-folder-structure",
+        "title": "Minha estrutura de pastas no Next.js para projetos reais",
+        "summary": "Uma estrutura que continua tranquila conforme os projetos crescem.",
+        "category": "Engenharia",
+        "publishedAt": "2026-01-11",
+        "readTime": "8 min de leitura",
+        "tags": ["Next.js", "Arquitetura", "TypeScript"],
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Estrutura de pastas não é sobre ser esperto. É sobre reduzir hesitação quando você volta ao código depois."
+          },
+          {
+            "type": "heading",
+            "text": "Princípios que eu sigo"
+          },
+          {
+            "type": "list",
+            "items": [
+              "A lógica específica da rota fica perto da rota.",
+              "Partes reutilizáveis vivem em lugares compartilhados e óbvios.",
+              "Os nomes explicam intenção, não trivia técnica."
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "O objetivo não é organização perfeita. O objetivo é manutenção fácil."
+          }
+        ]
+      },
+      {
+        "slug": "frontend-performance-without-guessing",
+        "title": "Performance de frontend sem adivinhação",
+        "summary": "Um ciclo simples para trabalhar performance sem cair em otimizações aleatórias.",
+        "category": "Performance",
+        "publishedAt": "2025-12-04",
+        "readTime": "5 min de leitura",
+        "tags": ["Performance", "Core Web Vitals", "DX"],
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Performance fica cara quando times otimizam no escuro. Meça, altere, valide e repita."
+          },
+          {
+            "type": "list",
+            "items": [
+              "Crie uma linha de base para as páginas principais.",
+              "Priorize o que impacta usuários reais.",
+              "Teste novamente cada mudança e mantenha anotações."
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Isso mantém o trabalho de performance calmo e bem fundamentado."
+          }
+        ]
+      }
+    ]
+  }
+}

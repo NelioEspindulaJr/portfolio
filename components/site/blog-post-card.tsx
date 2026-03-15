@@ -1,4 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 
 import type { BlogPost } from "@/data/site-content";
 import { formatPostDate } from "@/lib/blog";
@@ -11,6 +12,9 @@ type BlogPostCardProps = {
 };
 
 export function BlogPostCard({ post }: BlogPostCardProps) {
+  const locale = useLocale();
+  const t = useTranslations("Blog.card");
+
   return (
     <article className="flex h-full flex-col justify-between rounded-xl border border-border bg-card p-5">
       <div className="space-y-3">
@@ -33,7 +37,7 @@ export function BlogPostCard({ post }: BlogPostCardProps) {
 
       <div className="mt-6 flex items-center justify-between text-xs text-muted-foreground">
         <p>
-          {formatPostDate(post.publishedAt)} · {post.readTime}
+          {formatPostDate(post.publishedAt, locale)} · {post.readTime}
         </p>
         <Button asChild variant="ghost" size="sm" className="-mr-2">
           <TrackedLink
@@ -44,7 +48,7 @@ export function BlogPostCard({ post }: BlogPostCardProps) {
               post_slug: post.slug,
             }}
           >
-            Read
+            {t("readCta")}
             <ArrowUpRight className="size-4" />
           </TrackedLink>
         </Button>
