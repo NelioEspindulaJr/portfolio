@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { setRequestLocale } from "next-intl/server";
+import { getLocale } from "next-intl/server";
 
 import { bebasNeue, inter, sora } from "@/app/[locale]/fonts";
 import { ViewTransitions } from "next-view-transitions";
@@ -28,16 +28,10 @@ export const metadata: Metadata = {
 
 type RootLayoutProps = Readonly<{
   children: React.ReactNode;
-  params: Promise<{ locale: string }>;
 }>;
 
-export default async function RootLayout({
-  children,
-  params,
-}: RootLayoutProps) {
-  const { locale } = await params;
-
-  setRequestLocale(locale);
+export default async function RootLayout({ children }: RootLayoutProps) {
+  const locale = await getLocale();
 
   return (
     <ViewTransitions>
