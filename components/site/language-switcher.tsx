@@ -38,7 +38,7 @@ export function LanguageSwitcher() {
         return (
           <TrackedLink
             key={option.locale}
-            href={pathname}
+            href={{ pathname }}
             locale={option.locale}
             aria-current={isActive ? "page" : undefined}
             aria-label={t(option.labelKey)}
@@ -61,6 +61,7 @@ export function LanguageSwitcher() {
               height={18}
               className="object-cover"
               unoptimized
+              style={{ height: "auto" }}
             />
             <span className="hidden sm:inline">{t(option.shortKey)}</span>
           </TrackedLink>

@@ -1,21 +1,11 @@
 import type { Metadata } from "next";
-import { getLocale } from "next-intl/server";
 
 import { bebasNeue, inter, sora } from "@/app/[locale]/fonts";
 import { ViewTransitions } from "next-view-transitions";
 
-import Providers from "@/components/providers/providers";
 import "./globals.css";
-import { JsonLd } from "@/components/seo/json-ld";
-import { SiteHeader } from "@/components/site/site-header";
-import { SiteFooter } from "@/components/site/site-footer";
 import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
-import {
-  createMetadata,
-  createPersonJsonLd,
-  createWebsiteJsonLd,
-  siteConfig,
-} from "@/lib/seo";
+import { createMetadata, siteConfig } from "@/lib/seo";
 
 export const metadata: Metadata = {
   ...createMetadata(),
@@ -31,21 +21,14 @@ type RootLayoutProps = Readonly<{
 }>;
 
 export default async function RootLayout({ children }: RootLayoutProps) {
-  const locale = await getLocale();
-
   return (
     <ViewTransitions>
-      <html lang={locale === "pt-br" ? "pt-BR" : "en"} suppressHydrationWarning>
+      <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
         <body
           className={`${inter.variable} ${sora.variable} ${bebasNeue.variable} antialiased`}
         >
           <GoogleTagManager gtmId="GTM-5TZ2QBSJ" />
-          <JsonLd data={[createWebsiteJsonLd(locale), createPersonJsonLd()]} />
-          <Providers>
-            <SiteHeader />
-            {children}
-            <SiteFooter />
-          </Providers>
+          {children}
           <GoogleAnalytics gaId="G-826MPJLXRR" />
         </body>
       </html>

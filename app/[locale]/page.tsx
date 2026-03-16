@@ -69,9 +69,10 @@ export default async function Home({ params }: HomePageProps) {
             <Image
               src="/brazil.svg"
               alt={siteContent.countryLabel}
-              width={25}
-              height={19}
+              width={281}
+              height={197}
               unoptimized
+              style={{ width: "auto", height: 19 }}
             />
 
             <span aria-hidden="true">·</span>

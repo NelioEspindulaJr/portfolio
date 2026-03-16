@@ -1,8 +1,9 @@
 import { ThemeProvider } from "next-themes";
-import QueryProvider from "./query-client-provider";
-import AuthProvider from "./auth-provider";
-import { TooltipProvider } from "../ui/tooltip";
 import { NextIntlClientProvider } from "next-intl";
+import { TooltipProvider } from "../ui/tooltip";
+
+import AuthProvider from "./auth-provider";
+import QueryProvider from "./query-client-provider";
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   return (
