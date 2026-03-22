@@ -1,11 +1,12 @@
 {
   "Metadata": {
-    "homeDescription": "Personal portfolio of Nélio Espíndula Junior with projects, writing, and experiments about fullstack development, product, and technology.",
+    "homeDescription": "Fullstack developer available for hire. I build modern web applications, APIs, and SaaS products with React, Next.js, and Node.js. Based in Brazil, working with clients worldwide.",
+    "homeKeywords": ["fullstack developer for hire", "React developer", "Next.js developer", "Node.js", "web development services", "SaaS development", "hire developer Brazil"],
     "blogTitle": "Blog",
     "blogDescription": "Articles, notes, and reflections on development, product, and technology.",
     "blogKeywords": ["blog", "articles", "software engineering"],
     "notFoundTitle": "Page not found",
-    "notFoundDescription": "The page you tried to access does not exist, was moved, or was never part of this portfolio.",
+    "notFoundDescription": "The page you tried to access does not exist, was moved, or was never part of this site.",
     "postNotFoundTitle": "Post not found",
     "postTitleSuffix": "Blog"
   },
@@ -19,22 +20,19 @@
   "Home": {
     "content": {
       "name": "Nélio Espíndula Junior",
-      "role": "A small corner on the internet",
+      "role": "Fullstack Developer for Hire",
       "headline": "Hello, I'm ",
       "headlineName": "Nélio",
-      "intro": "Welcome to my site. This is where I share what I am learning, what I am building, ideas, drafts, sketches, and other topics related to my work and technology.",
-      "about": "I hold a degree in Computer Science and work as a fullstack developer, balancing thoughtful interfaces with solid, well-organized backend systems. I believe in steady progress, clear code, and solutions that prioritize simplicity, maintainability, and good digital experiences for both users and developers.",
-      "now": [
-        "Write notes, thoughts, and experiences as a developer.",
-        "Improve this site as a long-term personal portfolio.",
-        "Keep things simple, minimal, and useful."
-      ],
+      "intro": "I build web applications that are fast, maintainable, and focused on user experience. If you need a reliable developer to bring your product to life, you're in the right place.",
+      "about": "I hold a degree in Computer Science and work as a fullstack developer, balancing thoughtful interfaces with solid, well-organized backend systems. I believe in steady progress, clear code, and solutions that prioritize simplicity, maintainability, and good digital experiences — for both users and the teams that maintain them.",
       "email": "hello@nelioespindula.dev",
       "countryLabel": "Brazil",
+      "heroPrimaryCta": "Get in touch",
+      "heroSecondaryCta": "See my work",
       "nav": [
-        { "href": "/#about", "label": "About" },
-        { "href": "/#now", "label": "Portfolio" },
-        { "href": "/#projects", "label": "Projects" }
+        { "href": "/#services", "label": "Services" },
+        { "href": "/#projects", "label": "Projects" },
+        { "href": "/#contact", "label": "Contact" }
       ],
       "social": [
         {
@@ -57,11 +55,34 @@
     "sections": {
       "aboutEyebrow": "About",
       "aboutTitle": "Who I am",
-      "nowEyebrow": "This portfolio",
-      "nowTitle": "What I am focused on",
+      "servicesEyebrow": "Services",
+      "servicesTitle": "What I build",
       "projectsEyebrow": "Projects",
-      "projectsTitle": "Recent work"
+      "projectsTitle": "Selected work",
+      "contactEyebrow": "Contact",
+      "contactTitle": "Let's work together",
+      "contactDescription": "I'm currently available for new projects. Whether you need a web application built from scratch, a feature added to an existing product, or technical guidance — reach out and let's talk.",
+      "contactEmailCta": "Send me an email",
+      "contactLinkedInCta": "Connect on LinkedIn"
     },
+    "services": [
+      {
+        "name": "Fullstack Web Development",
+        "description": "Complete web applications from database design to user interface, built with React, Next.js, and Node.js."
+      },
+      {
+        "name": "API Design & Integration",
+        "description": "REST APIs, third-party integrations, payment gateways, and data pipelines designed for reliability and clarity."
+      },
+      {
+        "name": "SaaS Product Development",
+        "description": "Multi-tenant platforms with subscription management, authentication flows, and admin dashboards — like LabAssyst, built from scratch."
+      },
+      {
+        "name": "Performance & Technical SEO",
+        "description": "Core Web Vitals optimization, server-side rendering, and SEO-ready architecture for applications that need to rank and convert."
+      }
+    ],
     "projects": [
       {
         "name": "Zig Tickets",
@@ -91,7 +112,7 @@
   "NotFound": {
     "eyebrow": "Error 404 / Page not found",
     "title": "This route fell off the map.",
-    "description": "The page you tried to access does not exist, was moved, or was never part of this portfolio. Head back home and follow a familiar path.",
+    "description": "The page you tried to access does not exist, was moved, or was never part of this site. Head back home and follow a familiar path.",
     "backHome": "Back to home"
   },
   "Blog": {

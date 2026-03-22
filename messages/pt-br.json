@@ -1,11 +1,12 @@
 {
   "Metadata": {
-    "homeDescription": "Portfólio pessoal de Nélio Espíndula Junior com projetos, textos e experimentos sobre desenvolvimento fullstack, produto e tecnologia.",
+    "homeDescription": "Desenvolvedor fullstack disponível para contratação. Construo aplicações web modernas, APIs e produtos SaaS com React, Next.js e Node.js. Baseado no Brasil, atendendo clientes no mundo todo.",
+    "homeKeywords": ["desenvolvedor fullstack", "desenvolvedor para contratar", "desenvolvedor React", "desenvolvedor Next.js", "Node.js", "serviços de desenvolvimento web", "desenvolvimento SaaS"],
     "blogTitle": "Blog",
     "blogDescription": "Artigos, notas e reflexões sobre desenvolvimento, produto e tecnologia.",
     "blogKeywords": ["blog", "artigos", "engenharia de software"],
     "notFoundTitle": "Página não encontrada",
-    "notFoundDescription": "A página que você tentou acessar não existe, foi movida ou nunca fez parte deste portfólio.",
+    "notFoundDescription": "A página que você tentou acessar não existe, foi movida ou nunca fez parte deste site.",
     "postNotFoundTitle": "Post não encontrado",
     "postTitleSuffix": "Blog"
   },
@@ -19,22 +20,19 @@
   "Home": {
     "content": {
       "name": "Nélio Espíndula Junior",
-      "role": "Um canto qualquer na internet",
+      "role": "Desenvolvedor Fullstack",
       "headline": "Olá, eu sou o ",
       "headlineName": "Nélio",
-      "intro": "Bem-vindo ao meu site. Neste espaço eu compartilho o que estou aprendendo, o que estou construindo, ideias, rascunhos, esboços e outros assuntos relacionados ao meu trabalho e tecnologia.",
-      "about": "Sou formado em Ciência da Computação e atuo como desenvolvedor fullstack, equilibrando interfaces bem pensadas com sistemas backend sólidos e organizados. Acredito em progresso constante, código claro e soluções que priorizam simplicidade, manutenção e boas experiências digitais, tanto para quem usa quanto para quem desenvolve.",
-      "now": [
-        "Escrever notas, pensamentos e experiências como desenvolvedor.",
-        "Melhorar este site como um portfólio pessoal de longo prazo.",
-        "Manter as coisas simples, minimalistas e úteis."
-      ],
+      "intro": "Construo aplicações web rápidas, sustentáveis e com foco em experiência do usuário. Se você precisa de um desenvolvedor confiável para dar vida ao seu produto, você está no lugar certo.",
+      "about": "Sou formado em Ciência da Computação e atuo como desenvolvedor fullstack, equilibrando interfaces bem pensadas com sistemas backend sólidos e organizados. Acredito em progresso constante, código claro e soluções que priorizam simplicidade, manutenção e boas experiências digitais — tanto para quem usa quanto para quem desenvolve.",
       "email": "hello@nelioespindula.dev",
       "countryLabel": "Brasil",
+      "heroPrimaryCta": "Entrar em contato",
+      "heroSecondaryCta": "Ver meus trabalhos",
       "nav": [
-        { "href": "/#about", "label": "Sobre mim" },
-        { "href": "/#now", "label": "Portfólio" },
-        { "href": "/#projects", "label": "Projetos" }
+        { "href": "/#services", "label": "Serviços" },
+        { "href": "/#projects", "label": "Projetos" },
+        { "href": "/#contact", "label": "Contato" }
       ],
       "social": [
         {
@@ -57,11 +55,34 @@
     "sections": {
       "aboutEyebrow": "Sobre mim",
       "aboutTitle": "Quem eu sou",
-      "nowEyebrow": "Este portfólio",
-      "nowTitle": "Meu foco principal",
+      "servicesEyebrow": "Serviços",
+      "servicesTitle": "O que eu construo",
       "projectsEyebrow": "Projetos",
-      "projectsTitle": "Trabalhos recentes"
+      "projectsTitle": "Trabalhos selecionados",
+      "contactEyebrow": "Contato",
+      "contactTitle": "Vamos trabalhar juntos",
+      "contactDescription": "Estou disponível para novos projetos. Se você precisa de uma aplicação web do zero, um recurso adicionado a um produto existente, ou orientação técnica — entre em contato e vamos conversar.",
+      "contactEmailCta": "Enviar um e-mail",
+      "contactLinkedInCta": "Conectar no LinkedIn"
     },
+    "services": [
+      {
+        "name": "Desenvolvimento Fullstack",
+        "description": "Aplicações web completas, do banco de dados à interface, construídas com React, Next.js e Node.js."
+      },
+      {
+        "name": "Design e Integração de APIs",
+        "description": "APIs REST, integração com meios de pagamento, serviços externos e padrões de saúde como TISS — desenvolvidas com foco em confiabilidade."
+      },
+      {
+        "name": "Desenvolvimento de Produtos SaaS",
+        "description": "Plataformas multi-tenant com gestão de assinaturas, autenticação e dashboards administrativos — como o LabAssyst, construído do zero."
+      },
+      {
+        "name": "Performance e SEO Técnico",
+        "description": "Otimização de Core Web Vitals, renderização no servidor e arquitetura voltada para SEO em aplicações que precisam ranquear e converter."
+      }
+    ],
     "projects": [
       {
         "name": "Zig Tickets",
@@ -91,7 +112,7 @@
   "NotFound": {
     "eyebrow": "Erro 404 / Página não encontrada",
     "title": "Essa rota saiu do mapa.",
-    "description": "A página que você tentou acessar não existe, foi movida ou nunca fez parte deste portfólio. Volte para o início e siga por um caminho conhecido.",
+    "description": "A página que você tentou acessar não existe, foi movida ou nunca fez parte deste site. Volte para o início e siga por um caminho conhecido.",
     "backHome": "Voltar para a home"
   },
   "Blog": {

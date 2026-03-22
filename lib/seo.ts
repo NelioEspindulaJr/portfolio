@@ -5,9 +5,9 @@ import type { BlogPost } from "@/data/site-content";
 export const siteConfig = {
   name: "Nélio Espíndula Junior",
   shortName: "Nélio Espíndula",
-  title: "Nélio Espíndula Junior",
+  title: "Nélio Espíndula Junior — Desenvolvedor Fullstack",
   description:
-    "Portfólio pessoal de Nélio Espíndula Junior com projetos, textos e experimentos sobre desenvolvimento fullstack, produto e tecnologia.",
+    "Desenvolvedor fullstack disponível para contratação. Construo aplicações web modernas, APIs e produtos SaaS com React, Next.js e Node.js. Baseado no Brasil, atendendo clientes no mundo todo.",
   url: "https://nelioespindula.dev",
   locale: "pt_BR",
   type: "website",
@@ -18,12 +18,15 @@ export const siteConfig = {
   keywords: [
     "Nélio Espíndula Junior",
     "Nélio Espíndula",
-    "portfolio",
     "desenvolvedor fullstack",
-    "Next.js",
-    "React",
+    "fullstack developer for hire",
+    "desenvolvedor React",
+    "Next.js developer",
+    "Node.js",
+    "desenvolvimento web",
+    "web development services",
+    "SaaS development",
     "TypeScript",
-    "blog de tecnologia",
   ],
   socialLinks: [
     "https://github.com/NelioEspindulaJr",
@@ -167,9 +170,52 @@ export function createPersonJsonLd() {
     "@type": "Person",
     name: siteConfig.author.name,
     url: siteConfig.url,
+    email: "hello@nelioespindula.dev",
     sameAs: [...siteConfig.socialLinks],
     jobTitle: "Desenvolvedor Fullstack",
-    knowsAbout: ["Next.js", "React", "TypeScript", "Node.js", "SEO técnico"],
+    knowsAbout: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Node.js",
+      "SaaS development",
+      "API design",
+      "SEO técnico",
+      "Core Web Vitals",
+    ],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Serviços de Desenvolvimento Web",
+      itemListElement: [
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Desenvolvimento Fullstack",
+            description:
+              "Aplicações web completas com React, Next.js e Node.js.",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Design e Integração de APIs",
+            description:
+              "APIs REST e integração com serviços externos e meios de pagamento.",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Desenvolvimento de Produtos SaaS",
+            description:
+              "Plataformas multi-tenant com gestão de assinaturas e dashboards.",
+          },
+        },
+      ],
+    },
   };
 }
 

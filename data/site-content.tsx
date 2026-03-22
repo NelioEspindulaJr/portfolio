@@ -35,6 +35,11 @@ export type BlogPost = {
   blocks: BlogBlock[];
 };
 
+export type Service = {
+  name: string;
+  description: string;
+};
+
 export type SiteContent = {
   name: string;
   role: string;
@@ -42,9 +47,10 @@ export type SiteContent = {
   headlineName: string;
   intro: string;
   about: string;
-  now: string[];
   email: string;
   countryLabel: string;
+  heroPrimaryCta: string;
+  heroSecondaryCta: string;
   nav: NavItem[];
   social: SocialItem[];
 };
@@ -63,6 +69,10 @@ export function getSiteContent(t: RawTranslator) {
 
 export function getProjects(t: RawTranslator) {
   return readRaw<Project[]>(t, "projects");
+}
+
+export function getServices(t: RawTranslator) {
+  return readRaw<Service[]>(t, "services");
 }
 
 export function getBlogPosts(t: RawTranslator) {
